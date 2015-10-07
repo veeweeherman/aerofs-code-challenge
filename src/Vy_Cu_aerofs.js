@@ -7,15 +7,20 @@
 
 // linear time and place
 
-var findItem = function(searchType, array, key){
-  if (Array.isArray(array)) {
-    console.log('hello');
-  } else {
-    return "you need to input an array!";
-  }
+// var findItem = function(searchType, array, key){
+//   if (Array.isArray(array)) {
+//     console.log('hello');
+//   } else {
+//     return "you need to input an array!";
+//   }
+// }
+// var func = function() {
+//   console.log(kkkk)
+// }
+// console.log( 3+8 );
+// console.log(findItem(1,{},3))
+exports.me = {
+
+  add: function(x,y){return x+y;}
+
 }
-var func = function() {
-  console.log(kkkk)
-}
-console.log( 3+8 );
-console.log(findItem(1,{},3))
