@@ -1,0 +1,30 @@
+{
+  "name": "aerofs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "bluebird": "^2.10.2",
+    "promise": "^7.0.4",
+    "promisify": "0.0.3"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.3"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/veeweeherman/aerofs-code-challenge.git"
+  },
+  "author": "Vy Cu <vy.hoang.cu@gmail.com> (veeweeherman.github.io)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/veeweeherman/aerofs-code-challenge/issues"
+  },
+  "homepage": "https://github.com/veeweeherman/aerofs-code-challenge#readme"
+}
