@@ -23,9 +23,25 @@ describe('searchType lessThan method', function() {
 });
 
 
+describe('_______', function() {
+  describe('searchType.____', function () {
+    var arr = [0,2,4,6,8,10];
+    var key = 7;
+    var result = aerofs.searchType.lessThan(arr,key);
+    it('should ____', function () {
+      assert(result === 3);
+      // assert.equal(-1, [1,2,3].indexOf(0));
+    });
+  });
+});
 
-
-
+// var findItem = function(searchType, array, key){
+//   if (Array.isArray(array)) {
+//     console.log('hello');
+//   } else {
+//     return "you need to input an array!";
+//   }
+// }
 
 
 
