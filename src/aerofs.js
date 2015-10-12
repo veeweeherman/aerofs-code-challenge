@@ -23,6 +23,17 @@ var findClosestMatch = function(searchType, array, key){
       index = i;
     }
   };
+  searchTypes.GreaterThanEquals = function(){
+    if (current === key){
+      matchTypeKey = current;
+      index = i;
+
+    } else if (current > key){
+      matchTypeKey = current;
+      index = i;
+      break;
+    }
+  };
 
 
 
@@ -30,6 +41,7 @@ var findClosestMatch = function(searchType, array, key){
   if (arrayAscends){
     for (var i = 0; i < array.length; i++) {
       var current = array[i];
+      console.log('current?',current)
       var endResult = searchTypes[searchType]();
     }
 
@@ -37,7 +49,7 @@ var findClosestMatch = function(searchType, array, key){
   }
 
 };
-console.log(findClosestMatch('LessThanEquals',[0,2,4,6,8],7));
+console.log(findClosestMatch('GreaterThanEquals',[0,2,4,6,8],1));
 
 
 
