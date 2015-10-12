@@ -5,7 +5,10 @@ var assert = require("assert");
 
 
 console.log('checking value of what\'s being exported from project :',aerofs.searchType.lessThan);
-
+// if length is 0, return null bc nothing to compare to
+// 
+//
+//
 
 describe('searchType lessThan method', function() {
   describe('searchType.lessThan', function () {

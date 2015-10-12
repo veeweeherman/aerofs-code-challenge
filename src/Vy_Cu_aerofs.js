@@ -36,60 +36,69 @@ var Promise = require('bluebird');
 //   }
 // };
 
-var direction = function(){ // when invoked, it will return the appropriate for-loop depending on which direction the array is sorted
-  if (arrayAscends){
-    return function(array, checker){
-      for (var i = 0; i < array.length; i++) {
-        if (checker); // array[i]
-        resultKey = array[i];
-        index = i;
-      }
-    };
-  } else {
-    return function(array, checker){
-      for (var i = array.length-1; i >= 0; i--) {
-        if (checker); // array[i]
-        resultKey = array[i];
-        index = i;
-      }
-    };
-  }
-};
 
-var searchTypes = {
-  LessThan: array[i] < key,
-  LessThanEquals: array[i] <= key,
-  Equals: array[i] === key,
-  GreaterThanEquals: array[i] >= key,
-  GreaterThan: array[i] >= key
-};
 
-var findClosestMatch = function(searchType, items, key, n_items, dir){
+var findClosestMatch = function(searchType, array, key){
 
-  n_items = n_items || items.length; //assigns length of array if not given as param
-  if (n_items === 0) {return null;}
-  var arrayAscends = function(array) { // check if the input array is ascending or descending
-    if (array[0] < array[array.length-1]){return true;}
-    else {return false;}
+  if (array.length === 0) {return null;}
+
+  var arrayAscends; // check if the input array is ascending or descending
+  if (array[0] < array[array.length-1]){arrayAscends = true;}
+  else {arrayAscends = false;}
+  console.log('aray ascends?',arrayAscends);
+
+  var searchTypes = {
+    LessThan: 'array[i] < key',
+    LessThanEquals: 'array[i] <= key',
+    Equals: 'array[i] === key',
+    GreaterThanEquals: 'array[i] >= key',
+    GreaterThan: 'array[i] >= key'
+  };
+  var resultKey,index; //resultKey is the number that made the match
+
+  var direction = function(){ // when invoked, it will return the appropriate for-loop depending on which direction the array is sorted
+    if (arrayAscends){
+    console.log('the serachtype',typeof searchTypes[searchType]);
+      return function(array){
+        for (var i = 0; i < array.length; i++) {
+          if (searchTypes[searchType]) {
+            console.log('what si this',!(searchTypes[searchType]))
+            resultKey = array[i];
+            index = i;
+          console.log('????',resultKey,index);
+            break;
+          }// array[i]
+        }
+      };
+    } else {
+      return function(array, checker){
+        for (var i = array.length-1; i >= 0; i--) {
+          if (checker); // array[i]
+          resultKey = array[i];
+          index = i;
+          break;
+        }
+      };
+    }
   };
 
-  dir = direction(); //will return the function with the correct-direction for-loop
 
-  var resultKey,index; //resultKey is the number that made the match
+  var dir = direction(); //will return the function with the correct-direction for-loop
+// console.log('wat is dir',dir)
   // searchTypes[searchType] will be the checker-method needed
-  dir(items, searchTypes['searchType']);
-
+  dir(array);
 
   var matchType = function(resultKey){ // find the correct string to return, based on the found result and key
-    if (resultKey < key){return "FoundLess"};
-    if (resultKey > key){return "FoundGreater"};
-    if (resultKey === key){return "FoundExact"};
-    if (resultKey !== key){return "NotFound"};
+    if (resultKey < key){return "FoundLess";}
+    if (resultKey > key){return "FoundGreater";}
+    if (resultKey === key){return "FoundExact";}
+    if (resultKey !== key){return "NotFound";}
   };
-  return index+matchType();
-
+  console.log('resultKey: ',resultKey, ' index: ',index);
+  console.log('index+matchType();',index+matchType());
+  return index+' '+matchType();
 };
-
+console.log('FINAL ANSWER :',findClosestMatch('LessThan',[0,2,4,6,8],4));
 
 
 
@@ -143,6 +152,6 @@ var findClosestMatch = function(searchType, items, key, n_items, dir){
 
 
 
-exports.subtractOne = function(a){return a-1;};
-exports.foo = function(){};
-exports.searchType = searchType;
+// exports.subtractOne = function(a){return a-1;};
+// exports.foo = function(){};
+// exports.searchType = searchType;
