@@ -1,37 +1,43 @@
 // declare obj w 5 methods (what will invoke inside the for-loop)
-  // var searchTypes = {
-    var LessThan = function(current,key){
-      if (current < key){
-        matchTypeKey = current;
-        index = catchIndex;
-        console.log('inside less than func!',matchTypeKey,index)
-      }
-        return matchTypeKey+index;
-    }
-  // };
 var findClosestMatch = function(searchType, array, key){
-  var arrayAscends;
+  var arrayAscends, matchTypeKey, index;
     if (array[0] < array[array.length-1]) {arrayAscends = true;}
     else {arrayAscends = false;}
 
-  // console.log('array is acending:', arrayAscends);
-  var matchTypeKey, index;
+  var searchTypes = {};
+  searchTypes.LessThan = function(){
+    if (current < key){
+      matchTypeKey = current;
+      index = i;
+    }
+  };
+  searchTypes.LessThanEquals = function(){
+    if (current <= key){
+      matchTypeKey = current;
+      index = i;
+    }
+  };
+  searchTypes.Equals = function(){ // does not return not found
+    if (current === key){
+      matchTypeKey = current;
+      index = i;
+    }
+  };
+
+
+
+
   if (arrayAscends){
     for (var i = 0; i < array.length; i++) {
       var current = array[i];
-      catchIndex = i;
-      return LessThan(current,key);
-      // if (array[i] < key){
-      //   matchTypeKey = array[i];
-      //   index = i;
-      // }
-
+      var endResult = searchTypes[searchType]();
     }
+
+    return matchTypeKey+' '+index;
   }
-  console.log('matchtypekey and index',matchTypeKey,index);
-  return matchTypeKey+' '+index;
+
 };
-console.log(findClosestMatch('LessThan',[0,2,4,6,8],5));
+console.log(findClosestMatch('LessThanEquals',[0,2,4,6,8],7));
 
 
 
